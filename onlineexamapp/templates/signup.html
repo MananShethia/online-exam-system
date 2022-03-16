@@ -21,31 +21,47 @@
               trices congue males monterdum elit.</p>
           </div>
           <div class="article">
-            <h2><span>Sign Up</span> Now</h2>
+            <h2>
+              <span>Sign Up</span> Now<br>
+              <h3 style="color: black">
+                {% if msg %}
+                <B>{{msg}}</B>
+                {% endif %}
+              </h3>
+            </h2>
             <div class="clr"></div>
-            <form action="#" method="post" id="sendemail">
+            <form action="{% url 'signup' %}" method="post" id="sendemail">
+              {% csrf_token %}
               <ol>
                 <li>
                   <label for="fname">First Name</label>
-                  <input type="text" id="fname" name="fname" class="text" />
+                  <input type="text" id="fname" name="fname" class="text" value="{{user.fname}}" />
                 </li>
                 <li>
                   <label for="lname">Last Name</label>
-                  <input type="text" id="lname" name="lname" class="text" />
+                  <input type="text" id="lname" name="lname" class="text" value="{{user.lname}}" />
                 </li>
                 <li>
                   <label for="email">Email Address</label>
-                  <input type="email" id="email" name="email" class="text" />
+                  <input type="email" id="email" name="email" class="text" value="{{user.email}}" />
                 </li>
                 <li>
                   <label for="mobile">Mobile</label>
-                  <input type="text" id="mobile" name="mobile" class="text" />
+                  <input type="text" id="mobile" name="mobile" class="text" value="{{user.mobile}}" />
                 </li>
                 <li>
                   <label for="mobile">Gender</label>
                   <div id="genderInput" style="display: flex; margin-right: 500px; margin-top: 10px;">
-                    <input type="radio" name="gender" class="text" value="male" />Male
-                    <input type="radio" name="gender" class="text" value="female" />Female
+                    {% if user.gender == "male" %}
+                        <input type="radio" name="gender" value="male" checked />Male
+                        <input type="radio" name="gender" value="female" />Female
+                        {% elif user.gender == "female" %}
+                        <input type="radio" name="gender" value="male"/>Male
+                        <input type="radio" name="gender" value="female" checked />Female
+                        {% else %}
+                        <input type="radio" name="gender" value="male" required />Male
+                        <input type="radio" name="gender" value="female" />Female
+                        {% endif %}
                   </div>
                 </li>
                 <li>
@@ -58,7 +74,7 @@
                 </li>
                 <li>
                   <label for="address">Address</label>
-                  <textarea id="address" name="address" rows="8" cols="50"></textarea>
+                  <textarea id="address" name="address" rows="8" cols="50">{{user.address}}</textarea>
                 </li>
                 <li>
                   <input type="submit" name="signup" id="signup" value="Sign Up" class="send" />

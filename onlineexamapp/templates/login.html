@@ -21,7 +21,14 @@
               trices congue males monterdum elit.</p>
           </div>
           <div class="article">
-            <h2><span>Log In</span></h2>
+            <h2>
+              <span>Sign Up</span><br>
+              <h3 style="color: black">
+                {% if msg %}
+                <B>Hello {{fullName}}, {{msg}}</B>
+                {% endif %}
+              </h3>
+            </h2>
             <div class="clr"></div>
             <form action="#" method="post" id="sendemail">
               <ol>
