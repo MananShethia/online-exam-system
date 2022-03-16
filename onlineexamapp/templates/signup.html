@@ -3,10 +3,10 @@
 {% block content %}
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  <title>VictoryPro</title>
+  <title>VictoryPro | Sign Up</title>
 </head>
 
 <body>
@@ -15,59 +15,58 @@
       <div class="content_resize">
         <div class="mainbar">
           <div class="article">
-            <h2><span>Excellent Solution</span> For Your Business</h2>
-            <p class="infopost">Posted <span class="date">on 11 sep 2018</span> by <a href="#">Admin</a>
-              &nbsp;&nbsp;|&nbsp;&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
+            <h2><span>Sign Up</span></h2>
             <div class="clr"></div>
-            <div class="img"><img src="{% static 'images/img1.jpg' %}" width="178" height="185" alt="" class="fl" />
-            </div>
-            <div class="post_content">
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. <a href="#">Suspendisse
-                  bibendum. Cras id urna.</a> Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu
-                posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac
-                blandit ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra condimentum, lorem
-                tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. In tristique orci
-                porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse
-                bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu
-                posuere nunc justo tempus leo.</p>
-              <p><strong>Aenean consequat porttitor adipiscing. Nam pellentesque justo ut tortor congue lobortis. Donec
-                  venenatis sagittis fringilla.</strong> Etiam nec libero magna, et dictum velit. Proin mauris mauris,
-                mattis eu elementum eget, commodo in nulla. Mauris posuere venenatis pretium. Maecenas a dui sed lorem
-                aliquam dictum. Nunc urna leo, imperdiet eu bibendum ac, pretium ac massa. Cum sociis natoque penatibus
-                et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Quisque condimentum luctus
-                ullamcorper.</p>
-              <p class="spec"><a href="#" class="rm">Read more</a> <a href="#" class="com">Comments <span>11</span></a>
-              </p>
-            </div>
-            <div class="clr"></div>
+            <p>Nullapede laorem velit curabitudin enim in nibh ero leo in pede. Semperpurus nibh elit et convallis eu
+              trices congue males monterdum elit.</p>
           </div>
           <div class="article">
-            <h2><span>We'll Make Sure Template</span> Works For You</h2>
-            <p class="infopost">Posted <span class="date">on 29 aug 2016</span> by <a href="#">Admin</a>
-              &nbsp;&nbsp;|&nbsp;&nbsp; Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
+            <h2><span>Sign Up</span> Now</h2>
             <div class="clr"></div>
-            <div class="img"><img src="{% static 'images/img2.jpg' %}" width="178" height="185" alt="" class="fl" />
-            </div>
-            <div class="post_content">
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id
-                urna. <a href="#">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere
-                  nunc justo tempus leo.</a> Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac
-                blandit ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra condimentum, lorem
-                tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. In tristique orci
-                porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse
-                bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam.</p>
-              <p><strong>Aenean consequat porttitor adipiscing. Nam pellentesque justo ut tortor congue lobortis. Donec
-                  venenatis sagittis fringilla.</strong> Etiam nec libero magna, et dictum velit. Proin mauris mauris,
-                mattis eu elementum eget, commodo in nulla. Mauris posuere venenatis pretium. Maecenas a dui sed lorem
-                aliquam dictum. Nunc urna leo, imperdiet eu bibendum ac, pretium ac massa. Cum sociis natoque penatibus
-                et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Quisque condimentum luctus
-                ullamcorper.</p>
-              <p class="spec"><a href="#" class="rm">Read more</a> <a href="#" class="com">Comments <span>7</span></a>
-              </p>
-            </div>
-            <div class="clr"></div>
+            <form action="#" method="post" id="sendemail">
+              <ol>
+                <li>
+                  <label for="name">First Name</label>
+                  <input type="text" id="name" name="fname" class="text" />
+                </li>
+                <li>
+                  <label for="name">Last Name</label>
+                  <input type="text" id="name" name="lname" class="text" />
+                </li>
+                <li>
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" class="text" />
+                </li>
+                <li>
+                  <label for="mobile">Mobile</label>
+                  <input type="text" id="mobile" name="mobile" class="text" />
+                </li>
+                <li>
+                  <label for="mobile">Gender</label>
+                  <div id="genderInput" style="display: flex; margin-right: 500px; margin-top: 10px;">
+                    <input type="radio" name="gender" class="text" value="male" />Male
+                    <input type="radio" name="gender" class="text" value="female" />Female
+                  </div>
+                </li>
+                <li>
+                  <label for="password">Password</label>
+                  <input type="password" id="password" name="password" class="text" />
+                </li>
+                <li>
+                  <label for="cpassword">Confirm Password1</label>
+                  <input type="password" id="cpassword" name="cpassword" class="text" />
+                </li>
+                <li>
+                  <label for="address">Address</label>
+                  <textarea id="address" name="address" rows="8" cols="50"></textarea>
+                </li>
+                <li>
+                  <input type="submit" name="signup" id="signup" value="Sign Up" class="send" />
+                  <div class="clr"></div>
+                </li>
+              </ol>
+            </form>
           </div>
-          <p class="pages"><small>Page 1 of 2</small> <span>1</span> <a href="#">2</a> <a href="#">&raquo;</a></p>
         </div>
         <div class="sidebar">
           <div class="searchform">
@@ -136,7 +135,7 @@
           </ul>
         </div>
         <div class="col c3">
-          <h2><span>Contact</span> Us</h2>
+          <h2><span>Sign Up</span> Us</h2>
           <p>Nullam quam lorem, tristique non vestibulum nec, consectetur in risus. Aliquam a quam vel leo gravida
             gravida eu porttitor dui.</p>
           <p class="contact_info"> <span>Address:</span> 1458 TemplateAccess, USA<br />
@@ -153,5 +152,4 @@
 </body>
 
 </html>
-
 {% endblock %}

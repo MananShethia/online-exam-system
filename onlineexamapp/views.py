@@ -14,4 +14,7 @@ def blog(request):
     return render(request, 'index.html')
 
 def contact(request):
-    return render(request, 'index.html')
+    return render(request, 'contact.html')
+
+def signup(request):
+    return render(request, 'signup.html')
