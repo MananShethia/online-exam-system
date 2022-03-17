@@ -21,9 +21,17 @@
               trices congue males monterdum elit.</p>
           </div>
           <div class="article">
-            <h2><span>Send us</span> mail</h2>
+            <h2>
+              <span>Send us</span> mail<br>
+              <h3 style="color: black">
+                {% if msg %}
+                <B>{{msg}}</B>
+                {% endif %}
+              </h3>
+            </h2>
             <div class="clr"></div>
-            <form action="#" method="post" id="sendemail">
+            <form action="{% url 'contact' %}" method="post" id="sendemail">
+              {% csrf_token %}
               <ol>
                 <li>
                   <label for="name">Name</label>
@@ -47,6 +55,15 @@
                 </li>
               </ol>
             </form>
+          </div>
+          <div class="recent-contacts">
+            <h1>Recent Contact</h1>
+            {% for i in recentContacts %}
+            <b>Name</b> : {{i.name}}<br>
+            <b>Email</b> : {{i.email}}<br>
+            <b>Message</b> : {{i.message}}<br>
+            <hr>
+            {% endfor %}
           </div>
         </div>
         <div class="sidebar">

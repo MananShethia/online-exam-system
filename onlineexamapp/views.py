@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from onlineexamapp.models import User
+from onlineexamapp.models import Contact, User
 
 # Create your views here.
 def index(request):
@@ -15,7 +15,19 @@ def blog(request):
     return render(request, 'index.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+    if request.method == "POST":
+        Contact.objects.create(
+            name = request.POST['name'],
+            email = request.POST['email'],
+            mobile = request.POST['mobile'],
+            message = request.POST['message']
+        )
+        recentContacts = Contact.objects.all().order_by('-id')[:3]
+        msg = 'Message Send Successfully !!!'
+        return render(request, 'contact.html', {'msg': msg, 'recentContacts': recentContacts})
+    else:
+        recentContacts = Contact.objects.all().order_by('-id')[:3]
+        return render(request, 'contact.html', {'recentContacts': recentContacts})
 
 def signup(request):
     if request.method == "POST":
