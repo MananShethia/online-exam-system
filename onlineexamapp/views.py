@@ -80,15 +80,6 @@ def login(request):
         except:
             msg = 'Email Not Registered'
             return render(request, 'signup.html', {'msg': msg})
-        # TT
-        # try:
-        #     userObj = User.objects.get(email = request.POST['email'], password = request.POST['password'])
-        #     request.session['email'] = userObj.email
-        #     request.session['fname'] = userObj.fname
-        #     return render(request, 'index.html')
-        # except:
-        #     msg = 'email or password is incorrect'
-        #     return render(request, 'login.html', {'msg': msg})
     else:
         return render(request, 'login.html')
 
