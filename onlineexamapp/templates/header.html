@@ -31,8 +31,13 @@
             <li><a href="{% url 'about' %}"><span>About Us</span></a></li>
             <li><a href="{% url 'blog' %}"><span>Blog</span></a></li>
             <li><a href="{% url 'contact' %}"><span>Contact Us</span></a></li>
+            {% if request.session.email %}
+            <li>{{request.session.fname}}</li>
+            <li><a href="{% url 'logout' %}"><span>Log Out</span></a></li>
+            {% else %}
             <li><a href="{% url 'signup' %}"><span>Sign Up</span></a></li>
             <li><a href="{% url 'login' %}"><span>Log In</span></a></li>
+            {% endif %}
           </ul>
         </div>
         <div class="logo">
