@@ -22,7 +22,7 @@
           </div>
           <div class="article">
             <h2>
-              <span>Sign Up</span><br>
+              <span>Log In</span> Now<br>
               <h3 style="color: black">
                 {% if msg %}
                 <B>Hello {{fullName}}, {{msg}}</B>
@@ -41,7 +41,10 @@
                   <input type="password" id="password" name="password" class="text" />
                 </li>
                 <li>
-                  <input type="submit" name="login" id="login" value="Log In" class="send" />
+                  <div style="display: flex; justify-content: space-between; margin-right: 150px;">
+                    <input type="submit" name="login" id="login" value="Log In" class="send" />
+                    <h4>Don't Have Account? <a href="{% url 'signup' %}">Sign Up</a></h4>
+                  </div>
                   <div class="clr"></div>
                 </li>
               </ol>
