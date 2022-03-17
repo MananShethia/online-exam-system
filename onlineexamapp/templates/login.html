@@ -23,14 +23,19 @@
           <div class="article">
             <h2>
               <span>Log In</span> Now<br>
-              <h3 style="color: black">
+              <h3 style="color: rgb(65, 65, 65)">
                 {% if msg %}
-                <B>Hello {{fullName}}, {{msg}}</B>
+                <b>
+                  {% if fullName %}
+                  Hello, <span style="color: black;">{{fullName}}, </span>
+                  {% endif %}
+                  {{msg}}</b>
                 {% endif %}
               </h3>
             </h2>
             <div class="clr"></div>
-            <form action="#" method="post" id="sendemail">
+            <form action="{% url 'login' %}" method="post" id="sendemail">
+              {% csrf_token %}
               <ol>
                 <li>
                   <label for="email">Email Address</label>

@@ -64,4 +64,30 @@ def signup(request):
         return render(request, 'signup.html')
 
 def login(request):
-    return render(request, 'login.html')
+    if request.method == "POST":
+        user = User()
+        user.email = request.POST['email']
+        try:
+            userData = User.objects.get(email = request.POST['email'])
+            if request.POST['password'] == userData.password:
+                request.session['email'] = userData.email
+                request.session['fname'] = userData.fname
+                msg = 'Login Successfully'
+                return render(request, 'index.html', {'msg': msg})
+            else:
+                msg = 'Incorrect Password'
+                return render(request, 'login.html', {'msg': msg, 'user': user})
+        except:
+            msg = 'Email Not Registered'
+            return render(request, 'signup.html', {'msg': msg})
+        # TT
+        # try:
+        #     userObj = User.objects.get(email = request.POST['email'], password = request.POST['password'])
+        #     request.session['email'] = userObj.email
+        #     request.session['fname'] = userObj.fname
+        #     return render(request, 'index.html')
+        # except:
+        #     msg = 'email or password is incorrect'
+        #     return render(request, 'login.html', {'msg': msg})
+    else:
+        return render(request, 'login.html')
