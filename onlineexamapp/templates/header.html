@@ -13,6 +13,11 @@
   <script type="text/javascript" src="{% static 'js/jquery-1.4.2.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/coin-slider.min.js' %}"></script>
+  <script>
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+  </script>
 </head>
 
 <body>
