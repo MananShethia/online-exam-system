@@ -11,6 +11,7 @@ class User(models.Model): # STUDENT
     gender = models.CharField(max_length = 100)
     password = models.CharField(max_length = 100)
     address = models.TextField()
+    profilePic = models.ImageField(upload_to = 'profilePic/', default="")
     userStatus = models.CharField(max_length = 100, default = "Pending")
 
     def __str__(self):

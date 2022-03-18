@@ -47,6 +47,7 @@ def studentSignup(request):
         user.course = request.POST['course']
         user.gender = request.POST['gender']
         user.address = request.POST['address']
+        user.profilePic = request.FILES['profilePic']
         # user.save()
         try:
             User.objects.get(email=request.POST['email'])
@@ -67,6 +68,7 @@ def studentSignup(request):
                     gender=request.POST['gender'],
                     password=request.POST['password'],
                     address=request.POST['address'],
+                    profilePic=request.FILES['profilePic'],
                 )
                 fullName = request.POST['fname'] + ' ' + request.POST['lname']
                 msg = 'Your Account Created Successfully'
@@ -87,6 +89,7 @@ def login(request):
             if request.POST['password'] == userData.password:
                 request.session['email'] = userData.email
                 request.session['fname'] = userData.fname
+                request.session['profilePic'] = userData.profilePic.url
                 msg = 'Login Successfully'
                 return render(request, 'index.html', {'msg': msg})
             else:

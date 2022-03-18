@@ -14,13 +14,20 @@
   <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/coin-slider.min.js' %}"></script>
   <script>
-    if (window.history.replaceState) {
-      window.history.replaceState(null, null, window.location.href);
+    function cacheMemory(){
+      if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+      }
     }
   </script>
 </head>
 
+
+{% if request.session.email %}
 <body>
+{% else %}
+<body onload="cacheMemory()">
+{% endif %}
   <div class="main">
     <div class="header">
       <div class="header_resize">
@@ -34,7 +41,7 @@
             {% if request.session.email %}
             <li><a href="{% url 'changePassword' %}"><span>Change Password</span></a></li>
             <li><a href="{% url 'logout' %}"><span>Log Out</span></a></li>
-            <li>{{request.session.fname}}</li>
+            <li>{{request.session.fname}}<img src="{{request.session.profilePic}}" width="25px" height="25px"></li>
             {% else %}
             <li><a href="{% url 'studentSignup' %}"><span>Sign Up</span></a></li>
             <li><a href="{% url 'login' %}"><span>Log In</span></a></li>

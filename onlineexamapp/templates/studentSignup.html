@@ -30,7 +30,7 @@
               </h3>
             </h2>
             <div class="clr"></div>
-            <form action="{% url 'studentSignup' %}" method="post" id="sendemail">
+            <form action="{% url 'studentSignup' %}" method="post" id="sendemail" enctype="multipart/form-data">
               {% csrf_token %}
               <ol>
                 <li>
@@ -102,6 +102,10 @@
                 <li>
                   <label for="address">Address</label>
                   <textarea id="address" name="address" rows="8" cols="50">{{user.address}}</textarea>
+                </li>
+                <li>
+                  <label for="profilePic">Profile Picture</label>
+                  <input type="file" name="profilePic" value="{{user.profilePic}}" required />
                 </li>
                 <li>
                   <input type="submit" name="studentSignup" id="studentSignup" value="Sign Up" class="send" />

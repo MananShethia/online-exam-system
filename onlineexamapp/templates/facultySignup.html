@@ -30,7 +30,7 @@
               </h3>
             </h2>
             <div class="clr"></div>
-            <form action="{% url 'facultySignup' %}" method="post" id="sendemail">
+            <form action="{% url 'facultySignup' %}" method="post" id="sendemail" enctype="multipart/form-data">
               {% csrf_token %}
               <ol>
                 <li>
