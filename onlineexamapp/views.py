@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from onlineexamapp.models import Contact, User
 
 # Create your views here.
@@ -111,4 +111,22 @@ def facultySignup(request):
     return render(request, 'facultySignup.html')
 
 def changePassword(request):
-    return render(request, 'changePassword.html')
+    if request.method == 'POST':
+        user = User.objects.get(email=request.session['email'])
+        if user.password == request.POST['oldPassword']:
+            if request.POST['newPassword'] == request.POST['newcPassword']:
+                if request.POST['oldPassword'] != request.POST['newPassword']:
+                    user.password = request.POST['newPassword']
+                    user.save()
+                    return redirect('logout')
+                else:
+                    msg = 'Old and New Password Can\'t Be  Same'
+                    return render(request, 'changePassword.html', {'msg': msg})
+            else:
+                msg = 'New Password Does Not Match'
+                return render(request, 'changePassword.html', {'msg': msg})
+        else:
+            msg = 'Invalid Password'
+            return render(request, 'changePassword.html', {'msg': msg})
+    else:
+        return render(request, 'changePassword.html')
