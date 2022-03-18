@@ -101,3 +101,6 @@ def logout(request):
         return render(request, 'login.html')
     except:
         return render(request, 'login.html')
+
+def facultySignup(request):
+    return render(request, 'facultySignup.html')
