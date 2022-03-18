@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
+    userType = models.CharField(max_length = 100, default = "Student")
     fname = models.CharField(max_length = 100)
     lname = models.CharField(max_length = 100)
     email = models.CharField(max_length = 100)
@@ -9,6 +10,7 @@ class User(models.Model):
     gender = models.CharField(max_length = 100)
     password = models.CharField(max_length = 100)
     address = models.TextField()
+    userStatus = models.CharField(max_length = 100, default = "Pending")
 
     def __str__(self):
         return self.fname + ' ' + self.lname + ' --> ' + self.email

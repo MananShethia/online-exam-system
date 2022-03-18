@@ -34,43 +34,57 @@
               {% csrf_token %}
               <ol>
                 <li>
+                  <label for="userType">User Type</label>
+                  <div id="userType" style="display: flex; margin-right: 500px; margin-top: 10px;">
+                    {% if user.userType == "Student" %}
+                    <input type="radio" name="userType" value="Student" checked />Student
+                    <input type="radio" name="userType" value="Faculty" />Faculty
+                    {% elif user.userType == "Faculty" %}
+                    <input type="radio" name="userType" value="Student" />Student
+                    <input type="radio" name="userType" value="Faculty" checked />Faculty
+                    {% else %}
+                    <input type="radio" name="userType" value="Student" checked/>Student
+                    <input type="radio" name="userType" value="Faculty" />Faculty
+                    {% endif %}
+                  </div>
+                <li>
                   <label for="fname">First Name</label>
-                  <input type="text" id="fname" name="fname" class="text" value="{{user.fname}}" />
+                  <input type="text" id="fname" name="fname" class="text" value="{{user.fname}}" required />
                 </li>
                 <li>
                   <label for="lname">Last Name</label>
-                  <input type="text" id="lname" name="lname" class="text" value="{{user.lname}}" />
+                  <input type="text" id="lname" name="lname" class="text" value="{{user.lname}}" required />
                 </li>
                 <li>
                   <label for="email">Email Address</label>
-                  <input type="email" id="email" name="email" class="text" value="{{user.email}}" />
+                  <input type="email" id="email" name="email" class="text" value="{{user.email}}" required />
                 </li>
                 <li>
                   <label for="mobile">Mobile</label>
-                  <input type="text" id="mobile" name="mobile" class="text" value="{{user.mobile}}" />
+                  <input type="text" id="mobile" name="mobile" class="text" value="{{user.mobile}}" required />
                 </li>
                 <li>
-                  <label for="mobile">Gender</label>
+                  <label for="gender">Gender</label>
                   <div id="genderInput" style="display: flex; margin-right: 500px; margin-top: 10px;">
                     {% if user.gender == "male" %}
-                        <input type="radio" name="gender" value="male" checked />Male
-                        <input type="radio" name="gender" value="female" />Female
-                        {% elif user.gender == "female" %}
-                        <input type="radio" name="gender" value="male"/>Male
-                        <input type="radio" name="gender" value="female" checked />Female
-                        {% else %}
-                        <input type="radio" name="gender" value="male" required />Male
-                        <input type="radio" name="gender" value="female" />Female
-                        {% endif %}
+                    <input type="radio" name="gender" value="male" checked />Male
+                    <input type="radio" name="gender" value="female" />Female
+                    {% elif user.gender == "female" %}
+                    <input type="radio" name="gender" value="male" />Male
+                    <input type="radio" name="gender" value="female" checked />Female
+                    {% else %}
+                    <input type="radio" name="gender" value="male" required />Male
+                    <input type="radio" name="gender" value="female" />Female
+                    {% endif %}
                   </div>
                 </li>
                 <li>
                   <label for="password">Password</label>
-                  <input type="password" id="password" name="password" class="text" />
+                  <input type="password" id="password" name="password" class="text" required />
                 </li>
                 <li>
                   <label for="cpassword">Confirm Password1</label>
-                  <input type="password" id="cpassword" name="cpassword" class="text" />
+                  <input type="password" id="cpassword" name="cpassword" class="text" required />
                 </li>
                 <li>
                   <label for="address">Address</label>
