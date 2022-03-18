@@ -30,7 +30,7 @@
               </h3>
             </h2>
             <div class="clr"></div>
-            <form action="{% url 'signup' %}" method="post" id="sendemail">
+            <form action="{% url 'studentSignup' %}" method="post" id="sendemail">
               {% csrf_token %}
               <ol>
                 <li>
@@ -45,7 +45,7 @@
                     {% else %}
                     <!-- <input type="radio" name="userType" value="Student" checked/>Student -->
                     <!-- <input type="radio" name="userType" value="Faculty" />Faculty -->
-                    <a href="{% url 'signup' %}"><input type="radio" name="userType" value="Student" checked/>Student</a>
+                    <a href="{% url 'studentSignup' %}"><input type="radio" name="userType" value="Student" checked/>Student</a>
                     <a href="{% url 'facultySignup' %}"><input type="radio" name="userType" value="Faculty" />Faculty</a>
                     {% endif %}
                   </div>
@@ -64,6 +64,17 @@
                 <li>
                   <label for="mobile">Mobile</label>
                   <input type="text" id="mobile" name="mobile" class="text" value="{{user.mobile}}" required />
+                </li>
+                <li>
+                  <label for="course">Course</label>
+                  <select name="course" id="course" required>
+                    <option value="Selecy Your Course">--- Selecy Your Course ---</option>
+                    <option value="Computer Engineering">Computer Engineering</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil Engineering">Civil Engineering</option>
+                    <option value="Electronics">Electronics</option>
+                  </select>
                 </li>
                 <li>
                   <label for="gender">Gender</label>
@@ -93,7 +104,7 @@
                   <textarea id="address" name="address" rows="8" cols="50">{{user.address}}</textarea>
                 </li>
                 <li>
-                  <input type="submit" name="signup" id="signup" value="Sign Up" class="send" />
+                  <input type="submit" name="studentSignup" id="studentSignup" value="Sign Up" class="send" />
                   <div class="clr"></div>
                 </li>
               </ol>

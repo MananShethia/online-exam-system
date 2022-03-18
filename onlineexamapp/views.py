@@ -36,7 +36,7 @@ def contact(request):
         return render(request, 'contact.html', {'recentContacts': recentContacts})
 
 
-def signup(request):
+def studentSignup(request):
     if request.method == "POST":
         user = User()
         user.userType = request.POST['userType']
@@ -44,14 +44,18 @@ def signup(request):
         user.lname = request.POST['lname']
         user.email = request.POST['email']
         user.mobile = request.POST['mobile']
+        user.course = request.POST['course']
         user.gender = request.POST['gender']
         user.address = request.POST['address']
         # user.save()
         try:
             User.objects.get(email=request.POST['email'])
             msg = 'Email Already Registered'
-            return render(request, 'signup.html', {'msg': msg, 'user': user})
+            return render(request, 'studentSignup.html', {'msg': msg, 'user': user})
         except:
+            if request.POST['course'] == "Selecy Your Course":
+                msg = 'Please Select Your Course'
+                return render(request, 'studentSignup.html', {'msg': msg, 'user': user})
             if request.POST['password'] == request.POST['cpassword']:
                 User.objects.create(
                     userType=request.POST['userType'],
@@ -59,6 +63,7 @@ def signup(request):
                     lname=request.POST['lname'],
                     email=request.POST['email'],
                     mobile=request.POST['mobile'],
+                    course=request.POST['course'],
                     gender=request.POST['gender'],
                     password=request.POST['password'],
                     address=request.POST['address'],
@@ -68,9 +73,9 @@ def signup(request):
                 return render(request, 'login.html', {'msg': msg, 'fullName': fullName})
             else:
                 msg = 'Password Mismatch'
-                return render(request, 'signup.html', {'msg': msg, 'user': user})
+                return render(request, 'studentSignup.html', {'msg': msg, 'user': user})
     else:
-        return render(request, 'signup.html')
+        return render(request, 'studentSignup.html')
 
 
 def login(request):
@@ -89,7 +94,7 @@ def login(request):
                 return render(request, 'login.html', {'msg': msg, 'user': user})
         except:
             msg = 'Email Not Registered'
-            return render(request, 'signup.html', {'msg': msg})
+            return render(request, 'studentSignup.html', {'msg': msg})
     else:
         return render(request, 'login.html')
 
@@ -104,3 +109,6 @@ def logout(request):
 
 def facultySignup(request):
     return render(request, 'facultySignup.html')
+
+def changePassword(request):
+    return render(request, 'changePassword.html')

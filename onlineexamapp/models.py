@@ -1,12 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class User(models.Model):
+class User(models.Model): # STUDENT
     userType = models.CharField(max_length = 100, default = "Student")
     fname = models.CharField(max_length = 100)
     lname = models.CharField(max_length = 100)
     email = models.CharField(max_length = 100)
     mobile = models.CharField(max_length = 100)
+    course = models.CharField(max_length = 100, default="")
     gender = models.CharField(max_length = 100)
     password = models.CharField(max_length = 100)
     address = models.TextField()
