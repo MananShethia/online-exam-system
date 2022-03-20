@@ -87,11 +87,15 @@ def login(request):
         try:
             userData = User.objects.get(email=request.POST['email'])
             if request.POST['password'] == userData.password:
-                request.session['email'] = userData.email
-                request.session['fname'] = userData.fname
-                request.session['profilePic'] = userData.profilePic.url
-                msg = 'Login Successfully'
-                return render(request, 'index.html', {'msg': msg})
+                if userData.userStatus == "Pending":
+                    msg = 'You Are Not Approved By Higher Authority'
+                    return render(request, 'login.html', {'msg': msg})
+                else:
+                    request.session['email'] = userData.email
+                    request.session['fname'] = userData.fname
+                    request.session['profilePic'] = userData.profilePic.url
+                    msg = 'Login Successfully'
+                    return render(request, 'index.html', {'msg': msg})
             else:
                 msg = 'Incorrect Password'
                 return render(request, 'login.html', {'msg': msg, 'user': user})
@@ -111,7 +115,40 @@ def logout(request):
         return render(request, 'login.html')
 
 def facultySignup(request):
-    return render(request, 'facultySignup.html')
+    if request.method == "POST":
+        user = User()
+        user.userType = request.POST['userType']
+        user.fname = request.POST['fname']
+        user.lname = request.POST['lname']
+        user.email = request.POST['email']
+        user.mobile = request.POST['mobile']
+        user.gender = request.POST['gender']
+        user.address = request.POST['address']
+        # user.save()
+        try:
+            User.objects.get(email=request.POST['email'])
+            msg = 'Email Already Registered'
+            return render(request, 'facultySignup.html', {'msg': msg, 'user': user})
+        except:
+            if request.POST['password'] == request.POST['cpassword']:
+                User.objects.create(
+                    userType=request.POST['userType'],
+                    fname=request.POST['fname'],
+                    lname=request.POST['lname'],
+                    email=request.POST['email'],
+                    mobile=request.POST['mobile'],
+                    gender=request.POST['gender'],
+                    password=request.POST['password'],
+                    address=request.POST['address'],
+                )
+                fullName = request.POST['fname'] + ' ' + request.POST['lname']
+                msg = 'Your Account Created Successfully'
+                return render(request, 'login.html', {'msg': msg, 'fullName': fullName})
+            else:
+                msg = 'Password Mismatch'
+                return render(request, 'facultySignup.html', {'msg': msg, 'user': user})
+    else:
+        return render(request, 'facultySignup.html')
 
 def changePassword(request):
     if request.method == 'POST':

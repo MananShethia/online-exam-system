@@ -108,9 +108,11 @@
                   <input type="file" name="profilePic" value="{{user.profilePic}}" required />
                 </li>
                 <li>
-                  <input type="submit" name="studentSignup" id="studentSignup" value="Sign Up" class="send" />
-                  <h4>Have Account? <a href="{% url 'login' %}">Log In</a></h4>
-                  <div class="clr"></div>
+                  <div>
+                    <input type="submit" name="studentSignup" id="studentSignup" value="Sign Up" class="send" />
+                    <h4>Have Account? <a href="{% url 'login' %}">Log In</a></h4>
+                    <div class="clr"></div>
+                  </div>
                 </li>
               </ol>
             </form>
