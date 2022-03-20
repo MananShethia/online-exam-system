@@ -15,7 +15,7 @@ class User(models.Model): # STUDENT
     userStatus = models.CharField(max_length = 100, default = "Pending")
 
     def __str__(self):
-        return self.fname + ' ' + self.lname + ' --> ' + self.email
+        return self.userType + ' --> ' + self.fname + ' ' + self.lname + ' --> ' + self.email
 
 class Contact(models.Model):
     name = models.CharField(max_length = 100)
