@@ -37,11 +37,15 @@
             <li><a href="{% url 'support' %}"><span>Support</span></a></li>
             <li><a href="{% url 'about' %}"><span>About Us</span></a></li>
             <li><a href="{% url 'blog' %}"><span>Blog</span></a></li>
+            {% if request.session.userType == "Faculty" %}
+            <li><a href="{% url 'contact' %}"><span>Students List</span></a></li>
+            {% else %}
             <li><a href="{% url 'contact' %}"><span>Contact Us</span></a></li>
+            {% endif %}
             {% if request.session.email %}
             <li><a href="{% url 'changePassword' %}"><span>Change Password</span></a></li>
             <li><a href="{% url 'logout' %}"><span>Log Out</span></a></li>
-            <li>{{request.session.fname}}<img src="{{request.session.profilePic}}" width="25px" height="25px"></li>
+            <li>{{request.session.fname}} <img src="{{request.session.profilePic}}" width="25px" height="25px"></li>
             {% else %}
             <li><a href="{% url 'studentSignup' %}"><span>Sign Up</span></a></li>
             <li><a href="{% url 'login' %}"><span>Log In</span></a></li>

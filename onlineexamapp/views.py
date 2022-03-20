@@ -94,6 +94,7 @@ def login(request):
                     request.session['email'] = userData.email
                     request.session['fname'] = userData.fname
                     request.session['profilePic'] = userData.profilePic.url
+                    request.session['userType'] = userData.userType
                     msg = 'Login Successfully'
                     return render(request, 'index.html', {'msg': msg})
             else:
@@ -110,6 +111,8 @@ def logout(request):
     try:
         del request.session['email']
         del request.session['fname']
+        del request.session['profilePic']
+        del request.session['userType']
         return render(request, 'login.html')
     except:
         return render(request, 'login.html')
