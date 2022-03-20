@@ -1,0 +1,54 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .static-table{
+            text-align: left;
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    Student List Container
+    <table class="table table-hover static-table" align="center">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Course</th>
+            <th scope="col">Status</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in studentsList %}
+          <tr>
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.fname}} {{i.lname}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.course}}</td>
+            <td>{{i.userStatus}}</td>
+            {% if i.userStatus == "Approved" %}
+            <td><button type="button">Delete</button></td>
+            {% else %}
+            <td><button type="button">Approve</button></td>
+            <td><button type="button">Delete</button></td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</body>
+</html>
+{% endblock %}

@@ -51,19 +51,19 @@
                   </div>
                 <li>
                   <label for="fname">First Name</label>
-                  <input type="text" id="fname" name="fname" class="text" value="{{user.fname}}" required />
+                  <input type="text" id="fname" name="fname" class="inputText" value="{{user.fname}}" required />
                 </li>
                 <li>
                   <label for="lname">Last Name</label>
-                  <input type="text" id="lname" name="lname" class="text" value="{{user.lname}}" required />
+                  <input type="text" id="lname" name="lname" class="inputText" value="{{user.lname}}" required />
                 </li>
                 <li>
                   <label for="email">Email Address</label>
-                  <input type="email" id="email" name="email" class="text" value="{{user.email}}" required />
+                  <input type="email" id="email" name="email" class="inputText" value="{{user.email}}" required />
                 </li>
                 <li>
                   <label for="mobile">Mobile</label>
-                  <input type="text" id="mobile" name="mobile" class="text" value="{{user.mobile}}" required />
+                  <input type="text" id="mobile" name="mobile" class="inputText" value="{{user.mobile}}" required />
                 </li>
                 <li>
                   <label for="gender">Gender</label>
@@ -82,11 +82,11 @@
                 </li>
                 <li>
                   <label for="password">Password</label>
-                  <input type="password" id="password" name="password" class="text" required />
+                  <input type="password" id="password" name="password" class="inputText" required />
                 </li>
                 <li>
                   <label for="cpassword">Confirm Password1</label>
-                  <input type="password" id="cpassword" name="cpassword" class="text" required />
+                  <input type="password" id="cpassword" name="cpassword" class="inputText" required />
                 </li>
                 <li>
                   <label for="address">Address</label>
@@ -94,7 +94,7 @@
                 </li>
                 <li>
                   <input type="submit" name="facultySignup" id="facultySignup" value="Sign Up" class="send" />
-                  <h4>Have Account? <a href="{% url 'login' %}">Log In</a></h4>
+                  <h4 style="margin-top: 10px;">Have Account? <a href="{% url 'login' %}">Log In</a></h4>
                   <div class="clr"></div>
                 </li>
               </ol>

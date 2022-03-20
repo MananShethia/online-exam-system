@@ -173,3 +173,7 @@ def changePassword(request):
             return render(request, 'changePassword.html', {'msg': msg})
     else:
         return render(request, 'changePassword.html')
+
+def studentList(request):
+    studentsList = User.objects.filter(userType = "Student")
+    return render(request, 'studentList.html', {'studentsList': studentsList})

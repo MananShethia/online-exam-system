@@ -39,16 +39,16 @@
               <ol>
                 <li>
                   <label for="email">Email Address</label>
-                  <input type="email" id="email" name="email" class="text" />
+                  <input type="email" id="email" name="email" class="inputText" />
                 </li>
                 <li>
                   <label for="password">Password</label>
-                  <input type="password" id="password" name="password" class="text" />
+                  <input type="password" id="password" name="password" class="inputText" />
                 </li>
                 <li>
-                  <div style="display: flex; justify-content: space-between; margin-right: 150px;">
+                  <div style="display: flex; justify-content: space-between; margin-right: 130px;">
                     <input type="submit" name="login" id="login" value="Log In" class="send" />
-                    <h4>Don't Have Account? <a href="{% url 'studentSignup' %}">Sign Up</a></h4>
+                    <h4 style="margin-top: 40px;">Don't Have Account? <a href="{% url 'studentSignup' %}">Sign Up</a></h4>
                   </div>
                   <div class="clr"></div>
                 </li>
