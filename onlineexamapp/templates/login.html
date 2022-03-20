@@ -23,7 +23,7 @@
           <div class="article">
             <h2>
               <span>Log In</span> Now<br>
-              <h3 style="color: rgb(65, 65, 65)">
+              <h4 style="color: rgb(65, 65, 65)">
                 {% if msg %}
                 <b>
                   {% if fullName %}
@@ -31,7 +31,7 @@
                   {% endif %}
                   {{msg}}</b>
                 {% endif %}
-              </h3>
+              </h4>
             </h2>
             <div class="clr"></div>
             <form action="{% url 'login' %}" method="post" id="sendemail">

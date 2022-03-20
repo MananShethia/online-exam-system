@@ -41,9 +41,10 @@
             <td>{{i.userStatus}}</td>
             {% if i.userStatus == "Approved" %}
             <td><button type="button">Delete</button></td>
+            <td>Approved☑️</td>
             {% else %}
-            <td><button type="button">Approve</button></td>
             <td><button type="button">Delete</button></td>
+            <td><button type="button">Approve</button></td>
             {% endif %}
           </tr>
           {% endfor %}
