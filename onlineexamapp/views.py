@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from onlineexamapp.models import Contact, User
-
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -179,5 +179,12 @@ def studentList(request):
     return render(request, 'studentList.html', {'studentsList': studentsList})
 
 def studentApprove(request):
-    studentsList = User.objects.filter(userType = "Student")
-    return render(request, 'studentList.html', {'studentsList': studentsList})
+    userId = request.GET.get('id', None)
+    user = User.objects.get(id = userId)
+    if user.userStatus == "Approved":
+        user.userStatus = "Pending"
+    else:
+        user.userStatus = "Approved"
+    user.save()
+    data = { 'status' : 'Status Updated' }
+    return JsonResponse(data)

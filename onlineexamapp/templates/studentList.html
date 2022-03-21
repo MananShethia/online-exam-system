@@ -20,7 +20,7 @@
 </head>
 <body>
     Student List Container
-    <table class="table table-hover static-table" align="center">
+    <table class="table table-hover static-table" align="center" id="studentTable">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -28,7 +28,9 @@
             <th scope="col">Email</th>
             <th scope="col">Course</th>
             <th scope="col">Status</th>
-            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Status</th>
+            <th scope="col">Approve</th>
           </tr>
         </thead>
         <tbody>
@@ -42,14 +44,42 @@
             {% if i.userStatus == "Approved" %}
             <td><button type="button">Delete</button></td>
             <td>Approved☑️</td>
+            <td><button type="button" id="{{i.id}}">Move To Pending</button></td>
             {% else %}
             <td><button type="button">Delete</button></td>
-            <td><a href="{% url 'studentApprove' %}"><button type="button">Approve</button></a></td>
+            <td>Pending🔃</td>
+            <td><button type="button" id="{{i.id}}">Approve</button></td>
             {% endif %}
           </tr>
           {% endfor %}
         </tbody>
       </table>
+      <input type="text">
+      <script>
+        $("button").click( function() {
+          var id = $(this).attr("id");
+          
+          $.ajax({
+            url: '/ajax/studentApprove',
+            data: {
+              'id': id
+            },
+            dataType: 'json',
+            success: function(data) {
+              // $("#studentTable").load(window.location + " #studentTable");
+
+              // $("#studentTable").load(" #studentTable");
+
+              $("#studentTable").load(" #studentTable > *");
+
+              // $("#studentTable").empty();
+              // $("#studentTable").load(location.href + " #studentTable > *", "");
+              
+              // alert(data.user);
+            }
+          });
+        });
+      </script>
 </body>
 </html>
 {% endblock %}
