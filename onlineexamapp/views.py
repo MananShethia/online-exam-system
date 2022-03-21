@@ -177,3 +177,7 @@ def changePassword(request):
 def studentList(request):
     studentsList = User.objects.filter(userType = "Student")
     return render(request, 'studentList.html', {'studentsList': studentsList})
+
+def studentApprove(request):
+    studentsList = User.objects.filter(userType = "Student")
+    return render(request, 'studentList.html', {'studentsList': studentsList})

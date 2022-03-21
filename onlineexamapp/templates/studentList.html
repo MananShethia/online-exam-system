@@ -44,7 +44,7 @@
             <td>Approved☑️</td>
             {% else %}
             <td><button type="button">Delete</button></td>
-            <td><button type="button">Approve</button></td>
+            <td><a href="{% url 'studentApprove' %}"><button type="button">Approve</button></a></td>
             {% endif %}
           </tr>
           {% endfor %}
