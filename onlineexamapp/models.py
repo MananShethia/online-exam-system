@@ -32,3 +32,14 @@ class CourseDetail(models.Model):
 
     def __str__(self):
         return self.facultyDetail.fname + ' --> ' + self.courseName
+
+class QuestionDetail(models.Model):
+    courseName = models.ForeignKey(CourseDetail, on_delete=models.CASCADE)
+    option1 = models.CharField(max_length = 100)
+    option2 = models.CharField(max_length = 100)
+    option3 = models.CharField(max_length = 100)
+    option4 = models.CharField(max_length = 100)
+    answer = models.CharField(max_length = 100)
+
+    def __str__(self):
+        return self.courseName.courseName
