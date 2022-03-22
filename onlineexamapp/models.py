@@ -25,3 +25,10 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name + ' --> ' + self.email
+
+class CourseDetail(models.Model):
+    facultyDetail = models.ForeignKey(User, on_delete=models.CASCADE)
+    courseName = models.CharField(max_length = 100)
+
+    def __str__(self):
+        return self.facultyDetail.fname + ' --> ' + self.courseName
