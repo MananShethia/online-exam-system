@@ -45,6 +45,7 @@
             <li><a href="{% url 'blog' %}"><span>Blog</span></a></li>
             {% if request.session.userType == "Faculty" %}
             <li><a href="{% url 'studentList' %}"><span>Student List</span></a></li>
+            <li><a href="{% url 'addCourse' %}"><span>Add Course</span></a></li>
             {% else %}
             <li><a href="{% url 'contact' %}"><span>Contact Us</span></a></li>
             {% endif %}

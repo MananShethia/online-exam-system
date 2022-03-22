@@ -188,3 +188,6 @@ def studentApprove(request):
     user.save()
     data = { 'status' : 'Status Updated' }
     return JsonResponse(data)
+
+def addCourse(request):
+    return render(request, 'addCourse.html')

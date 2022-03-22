@@ -14,4 +14,6 @@ urlpatterns = [
     path('changePassword/', views.changePassword, name='changePassword'),
     path('studentList/', views.studentList, name='studentList'),
     path('ajax/studentApprove/', views.studentApprove, name='studentApprove'),
+
+    path('addCourse/', views.addCourse, name='addCourse'),
 ]
