@@ -30,7 +30,7 @@
 
 
 {% if request.session.email %}
-<body>
+<body onload="cacheMemory()">
 {% else %}
 <body onload="cacheMemory()">
 {% endif %}

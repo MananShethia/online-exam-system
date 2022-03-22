@@ -36,8 +36,8 @@
               {% csrf_token %}
               <ol>
                 <li>
-                  <label for="addCourse" style="margin-bottom: 10px;">Enter Course Name</label>
-                  <input type="addCourse" id="addCourse" name="addCourse" class="inputText" style="height: 30px;"/>
+                  <label for="courseName" style="margin-bottom: 10px;">Enter Course Name</label>
+                  <input type="courseName" id="courseName" name="courseName" class="inputText" style="height: 30px;"/>
                 </li>
                 <li>
                   <div style="display: flex; justify-content: space-between; margin-right: 130px;">
@@ -47,6 +47,27 @@
                 </li>
               </ol>
             </form>
+            <br><br>
+            <table class="table table-hover static-table" align="center" id="studentTable">
+              <thead>
+                <tr>
+                  <th scope="col">Course ID</th>
+                  <th scope="col" style="border-right: 3px solid black;">Course Name</th>
+                  <th scope="col">Added By</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in courseDetail %}
+                <tr>
+                  <th scope="row">{{i.id}}</th>
+                  <td style="border-right: 1px solid whitesmoke;">{{i.courseName}}</td>
+                  <td>{{i.facultyDetail.fname}}</td>
+                  <td>{{i.facultyDetail.email}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
         </div>
         <div class="sidebar">

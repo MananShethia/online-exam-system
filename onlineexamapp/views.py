@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from onlineexamapp.models import Contact, User
+from onlineexamapp.models import Contact, CourseDetail, User
 from django.http import JsonResponse
 # Create your views here.
 
@@ -190,4 +190,15 @@ def studentApprove(request):
     return JsonResponse(data)
 
 def addCourse(request):
-    return render(request, 'addCourse.html')
+    if request.method == "POST":
+        facultyDetail = User.objects.get(email = request.session['email'])
+        CourseDetail.objects.create(
+            facultyDetail = facultyDetail,
+            courseName = request.POST['courseName']
+        )
+        msg = "Course Added Successfully"
+        courseDetail = CourseDetail.objects.all()
+        return render(request, 'addCourse.html', { 'msg': msg, 'courseDetail': courseDetail })
+    else:
+        courseDetail = CourseDetail.objects.all()
+        return render(request, 'addCourse.html', { 'courseDetail': courseDetail })
