@@ -49,6 +49,7 @@
             <li><a href="{% url 'addQuestion' %}"><span>Add Questions</span></a></li>
             {% else %}
             <li><a href="{% url 'contact' %}"><span>Contact Us</span></a></li>
+            <li><a href="{% url 'studentTest' %}"><span>Test</span></a></li>
             {% endif %}
             {% if request.session.email %}
             <li><a href="{% url 'changePassword' %}"><span>Change Password</span></a></li>
