@@ -35,6 +35,7 @@ class CourseDetail(models.Model):
 
 class QuestionDetail(models.Model):
     courseName = models.ForeignKey(CourseDetail, on_delete=models.CASCADE)
+    question = models.TextField(default="")
     option1 = models.CharField(max_length = 100)
     option2 = models.CharField(max_length = 100)
     option3 = models.CharField(max_length = 100)
