@@ -38,7 +38,7 @@
                 <li>
                   <label for="courseName" style="margin-bottom: 10px;">Select Course</label>
                   <select class="text" name="courseName">
-                    <option>Selecy Your Course</option>
+                    <option>Select Course</option>
                     {% for i in courseDetail %}
                     <option value="{{i.id}}">{{i.courseName}}</option>
                     {% endfor %}
@@ -46,23 +46,23 @@
                 </li>
                 <li>
                   <label for="question" style="margin-bottom: 10px;">Write Qour Question Here</label>
-                  <textarea rows="6" cols="5"></textarea>
+                  <textarea rows="6" cols="5" name="question" required>{{addquestion.question}}</textarea>
                 </li>
                 <li>
                   <label for="option1" style="margin-bottom: 10px;">option 1</label>
-                  <input type="option1" id="option1" name="option1" class="inputText" style="height: 30px;"/>
+                  <input type="option1" id="option1" name="option1" class="inputText" style="height: 30px;" value="{{addquestion.option1}}" required/>
                 </li>
                 <li>
                   <label for="option2" style="margin-bottom: 10px;">option 2</label>
-                  <input type="option2" id="option2" name="option2" class="inputText" style="height: 30px;"/>
+                  <input type="option2" id="option2" name="option2" class="inputText" style="height: 30px;" value="{{addquestion.option2}}" required/>
                 </li>
                 <li>
                   <label for="option3" style="margin-bottom: 10px;">option 3</label>
-                  <input type="option3" id="option3" name="option3" class="inputText" style="height: 30px;"/>
+                  <input type="option3" id="option3" name="option3" class="inputText" style="height: 30px;" value="{{addquestion.option3}}" required/>
                 </li>
                 <li>
                   <label for="option4" style="margin-bottom: 10px;">option 4</label>
-                  <input type="option4" id="option4" name="option4" class="inputText" style="height: 30px;"/>
+                  <input type="option4" id="option4" name="option4" class="inputText" style="height: 30px;" value="{{addquestion.option4}}" required/>
                 </li>
                 <li>
                   <label for="answer" style="margin-bottom: 10px;">Answer</label>

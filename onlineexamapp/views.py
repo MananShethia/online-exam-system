@@ -206,11 +206,29 @@ def addCourse(request):
 def addQuestion(request):
     courseDetail = CourseDetail.objects.all()
     if request.method == "POST":
-        courseName = CourseDetail.objects.get(id = request.POST['courseName'])
-        QuestionDetail.objects.create(
-            courseName = courseName,
-            
-        )
-        return render(request, 'addQuestion.html')
+        addquestion = QuestionDetail()
+        # addquestion.courseName = request.POST['courseName']
+        addquestion.question = request.POST['question']
+        addquestion.option1 = request.POST['option1']
+        addquestion.option2 = request.POST['option2']
+        addquestion.option3 = request.POST['option3']
+        addquestion.option4 = request.POST['option4']
+        # addquestion.answer = request.POST['answer']
+        if request.POST['courseName'] == "Select Course" or request.POST['answer'] == "Select Correct Option":
+            msg = "Select Field Is Required"
+            return render(request, 'addQuestion.html', { 'courseDetail': courseDetail, 'msg': msg, 'addquestion': addquestion })
+        else:
+            courseName = CourseDetail.objects.get(id = request.POST['courseName'])
+            QuestionDetail.objects.create(
+                courseName = courseName,
+                question = request.POST['question'],
+                option1 = request.POST['option1'],
+                option2 = request.POST['option2'],
+                option3 = request.POST['option3'],
+                option4 = request.POST['option4'],
+                answer = request.POST['answer']
+            )
+            msg = "Question Added Successfully"
+            return render(request, 'addQuestion.html', { 'courseDetail': courseDetail, 'msg': msg })
     else: 
         return render(request, 'addQuestion.html', { 'courseDetail': courseDetail })
