@@ -22,7 +22,7 @@
           </div>
           <div class="article">
             <h2>
-              <span>Test</span> Now<br>
+              Choose Your Subject For<span> Test</span><br>
               <h4 style="color: rgb(65, 65, 65)">
                 {% if msg %}
                 <b>
@@ -32,17 +32,21 @@
               </h4>
             </h2>
             <div class="clr"></div>
-            <form action="{% url 'addCourse' %}" method="post" id="sendemail">
+            <form action="{% url 'studentTest' %}" method="post" id="sendemail">
               {% csrf_token %}
+
+              <div style="margin: 30px 0px 40px 0px;">
+                {% for i in courseDetail %}
+                <button style="margin-right: 20px;box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;" class="btn btn-info" >{{i.courseName}}</button>
+                {% endfor %}
+              </div>
               <ol>
                 <li>
-                  <label for="courseName" style="margin-bottom: 10px;">Enter Course Name</label>
-                  <input type="courseName" id="courseName" name="courseName" class="inputText" style="height: 30px;"/>
+                  <div style="display: flex; justify-content: space-between; margin-right: 130px;">
+                    <input type="submit" name="studentTest" id="studentTest" value="Student Test" class="send" />
+                  </div>
                 </li>
                 <li>
-                  <div style="display: flex; justify-content: space-between; margin-right: 130px;">
-                    <input type="submit" name="addCourse" id="addCourse" value="Add Course" class="send" />
-                  </div>
                   <div class="clr"></div>
                 </li>
               </ol>

@@ -234,4 +234,5 @@ def addQuestion(request):
         return render(request, 'addQuestion.html', { 'courseDetail': courseDetail })
 
 def studentTest(request):
-    return render(request, 'studentTest.html')
+    courseDetail = CourseDetail.objects.all()
+    return render(request, 'studentTest.html', { 'courseDetail': courseDetail })
