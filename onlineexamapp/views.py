@@ -202,3 +202,6 @@ def addCourse(request):
     else:
         courseDetail = CourseDetail.objects.all()
         return render(request, 'addCourse.html', { 'courseDetail': courseDetail })
+
+def addQuestion(request):
+    return render(request, 'addQuestion.html')
