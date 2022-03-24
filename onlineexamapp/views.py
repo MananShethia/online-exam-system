@@ -238,6 +238,7 @@ def studentTest(request):
     return render(request, 'studentTest.html', { 'courseDetail': courseDetail })
 
 def studentTestInfo(request, courseName):
-    # courseDetail = CourseDetail.objects.all()
     return render(request, 'studentTestInfo.html', { 'courseName': courseName })
 
+def startTest(request, courseName):
+    return render(request, 'startTest.html', { 'courseName': courseName })
