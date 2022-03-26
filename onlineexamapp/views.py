@@ -248,4 +248,9 @@ def startTest(request, courseName):
     return render(request, 'testPage.html', { 'questionDetail': questionDetail, 'courseName': courseDetail.courseName })
 
 def submitTest(request):
-    return render(request, 'testPage.html')
+    user = User.objects.get(email = request.session['email'])
+    l = list(request.POST.items())
+    print(len(l))
+    print(l[1:len(l)-1])
+    return render(request, 'index.html')
+    # pass
