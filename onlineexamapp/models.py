@@ -52,4 +52,4 @@ class Result(models.Model):
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.student.fname + ' --> ' + self.questionDetail.courseName.courseName
+        return self.student.fname + ' --> ' + self.student.course

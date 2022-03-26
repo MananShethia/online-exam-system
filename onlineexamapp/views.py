@@ -263,9 +263,10 @@ def submitTest(request):
         if question.answer == i[1]:
             # print(question.answer)
             marks += 1
-    print(marks)
+    # print(marks)
 
     Result.objects.create(
         student = user,
+        marks = marks
     )
     return render(request, 'index.html')
