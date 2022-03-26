@@ -241,4 +241,8 @@ def studentTestInfo(request, courseName):
     return render(request, 'studentTestInfo.html', { 'courseName': courseName })
 
 def startTest(request, courseName):
-    return render(request, 'startTest.html', { 'courseName': courseName })
+    courseDetail = CourseDetail.objects.get(courseName = courseName)
+    # print(courseDetail.courseName)
+    questionDetail = QuestionDetail.objects.filter(courseName = courseDetail)
+    # print(questionDetail)
+    return render(request, 'testPage.html', { 'questionDetail': questionDetail, 'courseName': courseDetail.courseName })
