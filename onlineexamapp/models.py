@@ -47,7 +47,7 @@ class QuestionDetail(models.Model):
 
 class Result(models.Model):
     student = models.ForeignKey(User, on_delete=models.CASCADE)
-    questionDetail = models.ForeignKey(QuestionDetail, on_delete=models.CASCADE)
+    # questionDetail = models.ForeignKey(QuestionDetail, on_delete=models.CASCADE)
     marks = models.PositiveIntegerField()
     date = models.DateTimeField(default=timezone.now)
 

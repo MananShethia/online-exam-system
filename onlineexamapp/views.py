@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from onlineexamapp.models import Contact, CourseDetail, QuestionDetail, User
+from onlineexamapp.models import Contact, CourseDetail, QuestionDetail, Result, User
 from django.http import JsonResponse
 # Create your views here.
 
@@ -265,4 +265,7 @@ def submitTest(request):
             marks += 1
     print(marks)
 
+    Result.objects.create(
+        student = user,
+    )
     return render(request, 'index.html')
