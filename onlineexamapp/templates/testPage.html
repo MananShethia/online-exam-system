@@ -1,0 +1,54 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>VictoryPro | Test</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="content">
+      <div class="content_resize">
+        <div class="mainbar">
+          <div class="article">
+            <h2><span>Test</span></h2>
+            <div class="clr"></div>
+            <p>Nullapede laorem velit curabitudin enim in nibh ero leo in pede. Semperpurus nibh elit et convallis eu
+              trices congue males monterdum elit.</p>
+          </div>
+          <div class="article">
+            <h2>
+              Choose Your Subject For<span> Test</span><br>
+              <h4 style="color: rgb(65, 65, 65)">
+                {% if msg %}
+                <b>
+                  {{msg}}
+                </b>
+                {% endif %}
+              </h4>
+            </h2>
+            <div class="clr"></div>
+            <!-- <form action="{% url 'studentTest' %}" method="post" id="sendemail"> -->
+              <!-- {% csrf_token %} -->
+
+              <div style="margin: 30px 0px 40px 0px;">
+                {% for i in courseDetail %}
+                <a href="{% url 'studentTestInfo' courseName=i.courseName %}">
+                  <button style="margin-right: 20px;box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;" class="btn btn-info" >{{i.courseName}}</button>
+                </a>
+                {% endfor %}
+              </div>
+          </div>
+        </div>
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+{% endblock %}
