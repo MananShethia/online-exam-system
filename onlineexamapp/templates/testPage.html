@@ -7,6 +7,14 @@
 
 <head>
   <title>VictoryPro | Test Page</title>
+  <style>
+    h3{
+      color: black;
+    }
+    p{
+      font-size: 25px;
+    }
+  </style>
 </head>
 
 <body>
@@ -20,18 +28,23 @@
           </div>
           <div class="article">
             <div class="clr"></div>
-            <!-- <form action="{% url 'studentTest' %}" method="post" id="sendemail"> -->
-              <!-- {% csrf_token %} -->
-
+            <form  method="post">
+              {% csrf_token %}
               <div style="margin: 30px 0px 40px 0px;">
                 {% for i in questionDetail %}
-                <h3>{{i.question}}</h3>
-                <h4><input type="radio" name="option{{i.id}}">{{i.option1}}</h4>
-                <h4><input type="radio" name="option{{i.id}}">{{i.option2}}</h4>
-                <h4><input type="radio" name="option{{i.id}}">{{i.option3}}</h4>
-                <h4><input type="radio" name="option{{i.id}}">{{i.option4}}</h4>
+                <h3>{{1}}{{i.question}}</h3>
+                <p><input type="radio" name="option{{i.id}}">{{i.option1}}</p>
+                <p><input type="radio" name="option{{i.id}}">{{i.option2}}</p>
+                <p><input type="radio" name="option{{i.id}}">{{i.option3}}</p>
+                <p><input type="radio" name="option{{i.id}}">{{i.option4}}</p>
                 {% endfor %}
               </div>
+              <div style="display: flex; justify-content: space-between; margin-right: 130px;">
+                <a href="{% url 'startTest' courseName=courseName %}">
+                  <input type="button" name="startTest" id="startTest" value="Strat Test" class="send" />
+                </a>
+              </div>
+            </form>
           </div>
         </div>
         <div class="clr"></div>
