@@ -253,4 +253,3 @@ def submitTest(request):
     print(len(l))
     print(l[1:len(l)-1])
     return render(request, 'index.html')
-    # pass

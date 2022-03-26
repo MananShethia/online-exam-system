@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 # Create your models here.
 class User(models.Model): # STUDENT
     userType = models.CharField(max_length = 100, default = "Student")
@@ -44,3 +44,12 @@ class QuestionDetail(models.Model):
 
     def __str__(self):
         return self.courseName.courseName
+
+class Result(models.Model):
+    student = models.ForeignKey(User, on_delete=models.CASCADE)
+    questionDetail = models.ForeignKey(QuestionDetail, on_delete=models.CASCADE)
+    marks = models.PositiveIntegerField()
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.student.fname + ' --> ' + self.questionDetail.courseName.courseName
