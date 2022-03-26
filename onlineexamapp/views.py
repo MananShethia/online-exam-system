@@ -250,6 +250,19 @@ def startTest(request, courseName):
 def submitTest(request):
     user = User.objects.get(email = request.session['email'])
     l = list(request.POST.items())
-    print(len(l))
-    print(l[1:len(l)-1])
+    # print(len(l))
+    # print(l[1:len(l)-1])
+    answerSheet = l[1:len(l)-1]
+    # print(answerSheet)
+    
+    marks = 0
+    for i in answerSheet:
+        question = QuestionDetail.objects.get(id = i[0])
+        # print("Answer of " + str(question.id) + " = " + question.answer)
+        # print("Student Select = " + i[1])
+        if question.answer == i[1]:
+            # print(question.answer)
+            marks += 1
+    print(marks)
+
     return render(request, 'index.html')

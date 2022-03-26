@@ -35,10 +35,10 @@
               <div style="margin: 30px 0px 40px 0px;">
                 {% for i in questionDetail %}
                 <h3>{{1}}{{i.question}}</h3>
-                <p><input type="radio" name="option{{i.id}}" value="option1"> {{i.option1}}</p>
-                <p><input type="radio" name="option{{i.id}}" value="option2"> {{i.option2}}</p>
-                <p><input type="radio" name="option{{i.id}}" value="option3"> {{i.option3}}</p>
-                <p><input type="radio" name="option{{i.id}}" value="option4"> {{i.option4}}</p>
+                <p><input type="radio" name="{{i.id}}" value="Option 1"> {{i.option1}}</p>
+                <p><input type="radio" name="{{i.id}}" value="Option 2"> {{i.option2}}</p>
+                <p><input type="radio" name="{{i.id}}" value="Option 3"> {{i.option3}}</p>
+                <p><input type="radio" name="{{i.id}}" value="Option 4"> {{i.option4}}</p>
                 {% endfor %}
                 <div style="display: flex; justify-content: space-between; margin-right: 130px;">
                   <!-- <a href="{% url 'startTest' courseName=courseName %}"> -->
