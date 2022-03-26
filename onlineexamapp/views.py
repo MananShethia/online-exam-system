@@ -246,3 +246,6 @@ def startTest(request, courseName):
     questionDetail = QuestionDetail.objects.filter(courseName = courseDetail)
     # print(questionDetail)
     return render(request, 'testPage.html', { 'questionDetail': questionDetail, 'courseName': courseDetail.courseName })
+
+def submitTest(request):
+    return render(request, 'testPage.html')
