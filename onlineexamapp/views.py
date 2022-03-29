@@ -274,3 +274,9 @@ def submitTest(request):
         marks = marks
     )
     return render(request, 'index.html')
+
+def studentTestResult(request):
+    student = User.objects.get(email= request.session['email'])
+    result = TestResult.objects.filter(student = student)
+    return render(request, 'studentResult.html', { 'result': result })
+    

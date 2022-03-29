@@ -21,4 +21,5 @@ urlpatterns = [
     path('studentTestInfo/<str:courseName>/', views.studentTestInfo, name='studentTestInfo'),
     path('startTest/<str:courseName>/', views.startTest, name='startTest'),
     path('submitTest/', views.submitTest, name='submitTest'),
+    path('studentTestResult/', views.studentTestResult, name='studentTestResult'),
 ]
