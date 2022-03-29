@@ -1,6 +1,5 @@
-from unittest import result
 from django.shortcuts import render, redirect
-from onlineexamapp.models import Contact, CourseDetail, QuestionDetail, TestResult, User
+from onlineexamapp.models import Contact, CourseDetail, FacultyCourses, QuestionDetail, TestResult, User
 from django.http import JsonResponse
 # Create your views here.
 
@@ -284,3 +283,24 @@ def studentTestResult(request):
 def facultyCourseResult(request):
     result = TestResult.objects.all()
     return render(request, 'facultyCourseResult.html', { 'result': result })
+
+def facultyCourse(request):
+    faculty = User.objects.get(email = request.session['email'])
+    facultyCourseList = FacultyCourses.objects.filter(faculty = faculty)
+    if request.method == "POST":
+        if request.POST['facultycourse'] == "--- Select Your Skill ---":
+            msg = "Please Select Your Course"
+            return render(request, 'facultyCourse.html', { 'facultyCourseList': facultyCourseList, 'msg': msg })
+        else:
+            try:
+                FacultyCourses.objects.get(faculty = faculty, facultyCourse = request.POST['facultycourse'])
+                msg = "This Course Is Already Selected"
+                return render(request, 'facultyCourse.html', { 'facultyCourseList': facultyCourseList, 'msg': msg })
+            except:
+                FacultyCourses.objects.create(
+                    faculty = faculty,
+                    facultyCourse = request.POST['facultycourse']
+                )
+                return render(request, 'facultyCourse.html', { 'facultyCourseList': facultyCourseList })
+    else:
+        return render(request, 'facultyCourse.html', { 'facultyCourseList': facultyCourseList })

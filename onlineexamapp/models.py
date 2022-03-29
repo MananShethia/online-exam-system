@@ -17,6 +17,19 @@ class User(models.Model): # STUDENT
     def __str__(self):
         return self.userType + ' --> ' + self.fname + ' ' + self.lname + ' --> ' + self.email
 
+class FacultyCourses(models.Model):
+    CHOICE = (
+        ('Computer Engineering', 'Computer Engineering'),
+        ('Mechanical', 'Mechanical'),
+        ('Civil Engineering', 'Civil Engineering'),
+        ('Electrical', 'Electrical')
+    )
+    faculty = models.ForeignKey(User, on_delete=models.CASCADE)
+    facultyCourse = models.CharField(max_length=100, choices=CHOICE)
+    
+    def __str__(self):
+        return self.faculty.fname + ' --> ' + self.facultyCourse
+
 class Contact(models.Model):
     name = models.CharField(max_length = 100)
     email = models.CharField(max_length = 100)
