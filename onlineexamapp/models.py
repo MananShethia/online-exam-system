@@ -45,11 +45,12 @@ class QuestionDetail(models.Model):
     def __str__(self):
         return self.courseName.courseName
 
-class Result(models.Model):
+class TestResult(models.Model):
     student = models.ForeignKey(User, on_delete=models.CASCADE)
-    # questionDetail = models.ForeignKey(QuestionDetail, on_delete=models.CASCADE)
+    course = models.ForeignKey(CourseDetail, on_delete=models.CASCADE)
+    testCourse = models.CharField(max_length=100)
     marks = models.PositiveIntegerField()
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.student.fname + ' --> ' + self.student.course
+        return str(self.student.id) + ' --> ' + self.student.fname + ' --> ' + self.student.course + ' !--EXAM OF--! ' + self.testCourse

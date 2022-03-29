@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from onlineexamapp.models import Contact, CourseDetail, QuestionDetail, Result, User
+from onlineexamapp.models import Contact, CourseDetail, QuestionDetail, TestResult, User
 from django.http import JsonResponse
 # Create your views here.
 
@@ -258,6 +258,8 @@ def submitTest(request):
     marks = 0
     for i in answerSheet:
         question = QuestionDetail.objects.get(id = i[0])
+        course = CourseDetail.objects.get(courseName = question.courseName.courseName)
+        # print(question.courseName.courseName)
         # print("Answer of " + str(question.id) + " = " + question.answer)
         # print("Student Select = " + i[1])
         if question.answer == i[1]:
@@ -265,8 +267,10 @@ def submitTest(request):
             marks += 1
     # print(marks)
 
-    Result.objects.create(
+    TestResult.objects.create(
         student = user,
+        course = course,
+        testCourse = question.courseName.courseName,
         marks = marks
     )
     return render(request, 'index.html')

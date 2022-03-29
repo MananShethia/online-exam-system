@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <script>
+        // function maxwin() {
+        //       var wscript = new ActiveXObject("Wscript.shell");
+        //       if (wscript!=null)
+        //       wscript.SendKeys("{F11}");
+        //   }
+        var element = document.querySelector("body");
+
+        // make the element go to full-screen mode
+        element.requestFullscreen()
+            .then(function () {
+                // element has entered fullscreen mode successfully
+            })
+            .catch(function (error) {
+                // element could not enter fullscreen mode
+            });
+    </script>
+</head>
+
+<body>
+    <!-- <form name="formcontact1" action="#"> -->
+    <!-- <input type='text' name='email' size="36" placeholder="Your e-mail :)" /> -->
+    <!-- <input type="submit" name="submit" value="SUBMIT" onclick="ValidateEmail(document.formcontact1.email)" /> -->
+    <!-- <input type="submit" name="submit" value="SUBMIT" onClick="window.location.reload();" /> -->
+    <!-- </form> -->
+    <input type="submit" name="submit" value="SUBMIT" onClick="maxwin();" />
+    <!-- <script>
+        // {
+        //     function ValidateEmail(event, inputText) {
+        //         event.preventDefault();
+        //     }
+        // }
+    </script> -->
+
+    <!-- <script type="text/javascript">
+        window.onbeforeunload = function () {
+            return "Dude, are you sure you want to leave? Think of the kittens!";
+        }
+    </script> -->
+
+
+
+    <script type="text/javascript">
+        function disableF5(e) { if ((e.which || e.keyCode) == 116 || (e.which || e.keyCode) == 82) e.preventDefault(); };
+
+        $(document).ready(function () {
+            $(document).on("keydown", disableF5);
+        });
+    </script>
+</body>
+
+</html>
