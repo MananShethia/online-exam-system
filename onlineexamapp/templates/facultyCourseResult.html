@@ -1,0 +1,49 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .static-table{
+            text-align: left;
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    Student Result Container
+    <table class="table table-hover static-table" align="center" id="studentTable">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Course</th>
+            <th scope="col">Name</th>
+            <th scope="col">Marks Obtain</th>
+            <th scope="col">Total Marks</th>
+            <th scope="col">Date Of Submission</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in result %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{i.testCourse}}</td>
+            <td>{{i.student.fname}} {{i.student.lname}}</td>
+            <td>{{i.marks}}</td>
+            <td></td>
+            <td>{{i.date}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</body>
+</html>
+{% endblock %}

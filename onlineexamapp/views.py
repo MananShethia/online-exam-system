@@ -1,3 +1,4 @@
+from unittest import result
 from django.shortcuts import render, redirect
 from onlineexamapp.models import Contact, CourseDetail, QuestionDetail, TestResult, User
 from django.http import JsonResponse
@@ -279,4 +280,7 @@ def studentTestResult(request):
     student = User.objects.get(email= request.session['email'])
     result = TestResult.objects.filter(student = student)
     return render(request, 'studentResult.html', { 'result': result })
-    
+
+def facultyCourseResult(request):
+    result = TestResult.objects.all()
+    return render(request, 'facultyCourseResult.html', { 'result': result })
