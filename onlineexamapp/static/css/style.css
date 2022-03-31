@@ -47,6 +47,7 @@ a {
 	z-index: 1;
 	margin:0 auto;
 	width:100%; /* 1160px */
+	height: 80px;
 	position: fixed;
 	background: #363636;
 }
@@ -57,11 +58,11 @@ a {
 	height:118px;
 }
 .company_logo {
-	padding-top: 40px;
+	padding-top: 25px;
 	float:left;
 	width:auto;
-	height:118px;
-	margin: 0px 0px 0px 150px;
+	height:80px;
+	margin: 0px 0px 0px 180px;
 	letter-spacing: 10px;
 }
 .company_logo > a > h6{
@@ -127,7 +128,7 @@ h1 small {
 }
 .menu_nav {
 	margin:0px 100px;
-	padding:68px 0 0;
+	padding:28px 0 0;
 	height:50px;
 	float:right;
 }
