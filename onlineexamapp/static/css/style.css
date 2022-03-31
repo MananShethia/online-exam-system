@@ -44,9 +44,12 @@ a {
 .header {
 }
 .header_resize {
+	z-index: 1;
 	margin:0 auto;
-	padding:0 0 32px;
-	width:1160px;
+	padding:0px 32px;
+	width:100%; /* 1160px */
+	position: fixed;
+	background: #363636;
 }
 .logo {
 	padding:0;
@@ -54,6 +57,18 @@ a {
 	width:auto;
 	height:118px;
 }
+.company_logo {
+	padding-top: 40px;
+	float:left;
+	width:auto;
+	height:118px;
+	margin: 0px 0px 0px 150px;
+	letter-spacing: 10px;
+}
+.company_logo > a > h6{
+	font-size: 30px;
+	color: #1ca2ce;
+  }
 h1 {
 	margin:0;
 	padding:32px 0 0;
@@ -110,7 +125,7 @@ h1 small {
 	border:none;
 }
 .menu_nav {
-	margin:0 auto;
+	margin:0px 100px;
 	padding:68px 0 0;
 	height:50px;
 	float:right;

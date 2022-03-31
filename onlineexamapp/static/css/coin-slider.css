@@ -14,6 +14,9 @@
 	outline:none;
 	border:none;
 }
+.coin-flex-text {
+	color: red;
+}
 /* buttons for switching */
 .cs-buttons {
 	margin:-320px 0 0;
@@ -41,14 +44,14 @@
 	color:#363636;
 	font-size:15px;
 	line-height:1.5em;
-	background:url(../images/overlay2.png) repeat left top;
+	/* background:url(../images/overlay2.png) repeat left top; */
 }
 .cs-title big {
 	font-size:20px;
 }
 /* buttons Next and Prew */
 .cs-prev, .cs-next {
-	background:url(../images/overlay2.png) repeat left top;
+	/* background:url(../images/overlay2.png) repeat left top; */
 	color:#363636;
 	padding:0 10px;
 }

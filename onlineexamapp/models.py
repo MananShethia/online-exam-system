@@ -28,7 +28,7 @@ class FacultyCourses(models.Model):
     facultyCourse = models.CharField(max_length=100, choices=CHOICE)
     
     def __str__(self):
-        return self.faculty.fname + ' --> ' + self.facultyCourse
+        return str(self.id) + ' :- ' + self.faculty.fname + ' --> ' + self.facultyCourse
 
 class Contact(models.Model):
     name = models.CharField(max_length = 100)

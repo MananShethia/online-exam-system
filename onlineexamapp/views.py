@@ -281,8 +281,37 @@ def studentTestResult(request):
     return render(request, 'studentResult.html', { 'result': result })
 
 def facultyCourseResult(request):
+    tempList = []
+    studentList = []
+    faculty = User.objects.get(email = request.session['email'])
+    facultyCourse = FacultyCourses.objects.filter(faculty = faculty)
+    # print(list(facultyCourse))
+    for i in range(len(facultyCourse)):
+        result = TestResult.objects.filter(testCourse = facultyCourse[i].facultyCourse)
+        for j in range(len(result)):
+            # print(result[j].marks)
+            tempList.append(result[j].student.fname)
+            tempList.append(result[j].student.lname)
+            tempList.append(result[j].student.course)
+            tempList.append(result[j].testCourse)
+            tempList.append(result[j].marks)
+            tempList.append(result[j].date)
+            studentList.append(tempList)
+            print(studentList)
+            tempList = []
+            # print(studentList)
+
+        # fc['marks'] = result.id
+    print()
+    print(studentList)
+    # print(result)
+    # print(len(result))
+
+    # course = CourseDetail.objects.get(facultyDetail = faculty)
+    # result = TestResult.objects.filter(course = course)
+    
     result = TestResult.objects.all()
-    return render(request, 'facultyCourseResult.html', { 'result': result })
+    return render(request, 'facultyCourseResult.html', { 'studentList': studentList })
 
 def facultyCourse(request):
     faculty = User.objects.get(email = request.session['email'])

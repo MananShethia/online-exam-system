@@ -24,22 +24,24 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Course</th>
             <th scope="col">Name</th>
+            <th scope="col">Enroll Course</th>
+            <th scope="col">Exam Course</th>
             <th scope="col">Marks Obtain</th>
             <th scope="col">Total Marks</th>
             <th scope="col">Date Of Submission</th>
           </tr>
         </thead>
         <tbody>
-          {% for i in result %}
+          {% for i in studentList %}
           <tr>
             <th scope="row">{{forloop.counter}}</th>
-            <td>{{i.testCourse}}</td>
-            <td>{{i.student.fname}} {{i.student.lname}}</td>
-            <td>{{i.marks}}</td>
+            <td>{{i.0}} {{i.1}}</td>
+            <td>{{i.2}}</td>
+            <td>{{i.3}}</td>
+            <td>{{i.4}}</td>
             <td></td>
-            <td>{{i.date}}</td>
+            <td>{{i.5}}</td>
           </tr>
           {% endfor %}
         </tbody>
