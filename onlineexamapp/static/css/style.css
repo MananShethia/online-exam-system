@@ -96,8 +96,7 @@ h1 small {
 }
 .slider {
 	padding:0px;
-	margin: 150px 120px 50px 120px;
-	/* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
+	margin: 0px 120px 50px 120px;
 	box-shadow: rgba(0, 0, 0, 0.56) -18px 0px 70px 30px;
 }
 .rss {
@@ -166,7 +165,7 @@ h1 small {
 	background-color: #1ca2ce;
 }
 .content_resize {
-	margin:0 auto;
+	margin:100px 0px 0px 50px;
 	padding:18px 0;
 	width:1160px;
 	background-color: #1ca2ce;

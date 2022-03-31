@@ -9,6 +9,7 @@
   
   <!-- Bootstarp Links -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   
   <!-- Static Links -->
@@ -28,11 +29,12 @@
   </script>
   <style>
     .navSidebar {
+      border-top: 1px solid #1ca2ceb3;
       z-index: 10000;
-      margin:   0px;
-      padding: 0;
+      margin:  0px;
+      padding-top: 0px;
       width: 200px;
-      background-color: #f1f1f1;
+      background-color: #363636;
       position: fixed;
       height: 100%;
       overflow: auto;
@@ -40,14 +42,16 @@
 
     .navSidebar a {
       display: block;
-      color: black;
+      color: white;
       padding: 16px;
       text-decoration: none;
     }
     
     .navSidebar a.active {
+      /* background-color: #04AA6D; */
       background-color: #04AA6D;
       color: white;
+      border-radius: 100px;
     }
 
     .navSidebar a:hover:not(.active) {
@@ -77,6 +81,29 @@
         float: none;
       }
     }
+
+    .default_propic{
+      display: grid;
+      place-items: center;
+      margin: 20px auto;
+    }
+    .default_propic > img{
+      width: 100px;
+      object-fit: contain;
+      border-radius: 100%;
+    }
+    .default_propic > h6{
+      margin-top: 15px;
+    }
+    .default_footer{
+      color: #1a1a1a;
+      font-size: 20px;
+      margin-top: 250px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      letter-spacing: 20px;
+    }
   </style>
 </head>
 
@@ -86,13 +113,12 @@
 {% else %}
 <body onload="cacheMemory()">
 {% endif %}
-  <div class="main">
+  <div class="main_header">
     <div class="header">
       <div class="header_resize">
         <div class="menu_nav">
           <ul>
             <li class="active"><a href="{% url 'index' %}"><span>Home Page</span></a></li>
-            <li><a href="{% url 'support' %}"><span>Support</span></a></li>
             <li><a href="{% url 'about' %}"><span>About Us</span></a></li>
             <li><a href="{% url 'blog' %}"><span>Blog</span></a></li>
             {% if request.session.userType == "Faculty" %}
@@ -116,18 +142,23 @@
             {% endif %}
           </ul>
         </div>
-        <!-- <div class="logo">
-          <h1 class="company_name"><a href="{% url 'index' %}"><span>Infita</span></a></h1>
-        </div> -->
         <div class="company_logo">
           <a href="{% url 'index' %}"><h6>INFITA</h6></a>
         </div>
         <div class="clr"></div>
         <div class="navSidebar">
-          <a class="active" href="#home">Home</a>
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
-          <a href="#about">About</a>
+          <duv class="default_propic">
+            <img src="{% static 'images/propic.webp' %}" alt="profile">
+            <h6>Hello, Fellow</h6>
+          </duv>
+          <!-- <a class="active" href="#home">Home</a> -->
+          <a href="#">News</a>
+          <a href="{% url 'support' %}">Support</a>
+          <div class="default_footer">
+            <i class="fa-brands fa-linkedin"></i>
+            <i class="fa-brands fa-github-square"></i>
+            <i class="fa-solid fa-envelope"></i>
+          </div>
         </div>
         
         <div class="clr"></div>
