@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from onlineexamapp.models import Contact, CourseDetail, FacultyCourses, QuestionDetail, TestResult, User
 from django.http import JsonResponse
+from django.conf import settings
+from django.core.mail import send_mail
+
 # Create your views here.
 
 
@@ -248,9 +251,7 @@ def studentTestInfo(request, courseName):
 
 def startTest(request, courseName):
     courseDetail = CourseDetail.objects.get(courseName = courseName)
-    # print(courseDetail.courseName)
     questionDetail = QuestionDetail.objects.filter(courseName = courseDetail)
-    # print(questionDetail)
     return render(request, 'testPage.html', { 'questionDetail': questionDetail, 'courseName': courseDetail.courseName })
 
 def submitTest(request):
@@ -262,24 +263,34 @@ def submitTest(request):
     # print(answerSheet)
     
     marks = 0
-    for i in answerSheet:
-        question = QuestionDetail.objects.get(id = i[0])
-        course = CourseDetail.objects.get(courseName = question.courseName.courseName)
-        # print(question.courseName.courseName)
-        # print("Answer of " + str(question.id) + " = " + question.answer)
-        # print("Student Select = " + i[1])
-        if question.answer == i[1]:
-            # print(question.answer)
-            marks += 1
-    # print(marks)
+    if answerSheet:
+        for i in answerSheet:
+            question = QuestionDetail.objects.get(id = i[0])
+            course = CourseDetail.objects.get(courseName = question.courseName.courseName)
+            # print(question.courseName.courseName)
+            # print("Answer of " + str(question.id) + " = " + question.answer)
+            # print("Student Select = " + i[1])
+            if question.answer == i[1]:
+                # print(question.answer)
+                marks += 1
+        # print(marks)
 
-    TestResult.objects.create(
-        student = user,
-        course = course,
-        testCourse = question.courseName.courseName,
-        marks = marks
-    )
-    return redirect('studentTestResult')
+        TestResult.objects.create(
+            student = user,
+            course = course,
+            testCourse = question.courseName.courseName,
+            marks = marks
+        )
+
+        # subject = '[INFITA] Exam Result'
+        # message = 'Hello ' + user.fname + ', Your gave exam for ' + question.courseName.courseName + ' subject.\nIn which you obtain : ' + str(marks) + ' marks.'
+        # email_from = settings.EMAIL_HOST_USER
+        # recipient_list = [user.email, ]
+        # send_mail( subject, message, email_from, recipient_list )
+
+        return redirect('studentTestResult')
+    else:
+        return redirect('studentTest')
 
 def studentTestResult(request):
     student = User.objects.get(email= request.session['email'])

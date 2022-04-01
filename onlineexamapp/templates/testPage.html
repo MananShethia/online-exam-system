@@ -52,7 +52,7 @@
                 {% endfor %}
                 <div style="display: flex; justify-content: space-between; margin-right: 130px;">
                   <!-- <a href="{% url 'startTest' courseName=courseName %}"> -->
-                  <input type="submit" name="submitTest" id="submitTest" value="Submit Test" class="send" />
+                  <input type="submit" name="{{courseName}}" id="submitTest" value="Submit Test" class="send" />
                   <!-- </a> -->
                 </div>
               </div>
