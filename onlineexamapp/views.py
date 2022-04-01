@@ -279,7 +279,7 @@ def submitTest(request):
         testCourse = question.courseName.courseName,
         marks = marks
     )
-    return render(request, 'index.html')
+    return redirect('studentTestResult')
 
 def studentTestResult(request):
     student = User.objects.get(email= request.session['email'])
