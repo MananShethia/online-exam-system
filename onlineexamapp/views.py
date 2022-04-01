@@ -282,11 +282,11 @@ def submitTest(request):
             marks = marks
         )
 
-        # subject = '[INFITA] Exam Result'
-        # message = 'Hello ' + user.fname + ', Your gave exam for ' + question.courseName.courseName + ' subject.\nIn which you obtain : ' + str(marks) + ' marks.'
-        # email_from = settings.EMAIL_HOST_USER
-        # recipient_list = [user.email, ]
-        # send_mail( subject, message, email_from, recipient_list )
+        subject = '[INFITA] Exam Result'
+        message = 'Hello ' + user.fname + ', Your gave exam for ' + question.courseName.courseName + ' subject.\nIn which you obtain : ' + str(marks) + ' marks.'
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [user.email, ]
+        send_mail( subject, message, email_from, recipient_list )
 
         return redirect('studentTestResult')
     else:
