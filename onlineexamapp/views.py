@@ -35,6 +35,12 @@ def contact(request):
         recentContacts = Contact.objects.all().order_by('-id')[:3]
         return render(request, 'contact.html', {'recentContacts': recentContacts})
 
+def emailValidation(request):
+    email = request.GET.get('email')
+    data = {
+        'emailIsTaken': User.objects.filter(email__iexact = email).exists()
+    }
+    return JsonResponse(data)
 
 def studentSignup(request):
     if request.method == "POST":

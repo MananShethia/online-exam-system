@@ -26,4 +26,6 @@ urlpatterns = [
     path('facultyCourseResult/', views.facultyCourseResult, name='facultyCourseResult'),
 
     path('facultyCourse/', views.facultyCourse, name='facultyCourse'),
+
+    path('ajax/emailValidation/', views.emailValidation, name='emailValidation'),
 ]

@@ -40,6 +40,7 @@
                 <li>
                   <label for="email" style="margin-bottom: 10px;">Email Address</label>
                   <input type="email" id="email" name="email" class="inputText" style="height: 30px;" />
+                  <span id="emailMsg" style="color: red;"></span>
                 </li>
                 <li>
                   <label for="password" style="margin-bottom: 10px;">Password</label>
@@ -137,6 +138,29 @@
       </div>
     </div>
   </div>
+
+  <script>
+    $('#email').change(function() {
+      var email = $(this).val();
+      // console.log(email);
+      $.ajax({
+        url: '/ajax/emailValidation/',
+        data: {
+          'email': email
+        },
+        dataType: 'json',
+        success: function(data) {
+          // console.log(data);
+          if(!data.emailIsTaken){
+            document.getElementById('emailMsg').innerHTML = 'Email Not Registered';
+          }
+          else{
+            document.getElementById('emailMsg').innerHTML = '';
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
