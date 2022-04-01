@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mycanvas{
+            transform: rotate(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="190" height="190">
+        canvas not supported
+    </canvas>
+</body>
+<script type="text/javascript">
+    var canvas = document.getElementById("mycanvas");
+    var context = canvas.getContext("2d");
+
+    var radius = 50;
+    var cx = 130;
+    var cy = 130;
+    context.lineWidth = 13;
+    context.strokeStyle = "green";
+    var angle = 0;
+    var newAngle = 0;
+
+    function go() {
+        if (angle < 200) {
+            angle += 2;
+            newAngle = angle * 0.01;
+            requestAnimationFrame(drawCircle);
+        }
+    }
+
+    function drawCircle() {
+        context.clearRect(0, 0, canvas.width, canvas.height); // clear complete canvas
+        context.beginPath();
+        context.arc(cx, cy, radius, 0, -(newAngle * Math.PI));
+        context.stroke();
+    }
+
+    requestAnimationFrame(drawCircle); // THIS METHOD TELLS YOUR BROWSERTHAT YOU WISH TO PERFORM AN ANIMATION AND REQUEST THAT THE BROWSER CALL A SPECIFIC FUNCTION TO UPDATE AN ANIMATION BEFORE THE NEXT REPAINT
+    setInterval(go, 1000 / 60);
+</script>
+</html>

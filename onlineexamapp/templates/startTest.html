@@ -6,9 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  <title>VictoryPro | {{courseName}} Test</title>
+  <title>VictoryPro | Test</title>
   <style>
-    .span{
+    .span {
       font-weight: 10000;
     }
   </style>
@@ -27,7 +27,7 @@
           </div>
           <div class="article">
             <h2>
-              <span> {{courseName}} Test</span><br>
+              <span>{{courseName}} Test</span><br>
               <h4 style="color: rgb(65, 65, 65)">
                 {% if msg %}
                 <b>
@@ -40,31 +40,32 @@
             <!-- <form action="{% url 'studentTest' %}" method="post" id="sendemail">
               {% csrf_token %} -->
 
-              <div style="margin: 30px 0px 40px 0px;">
-                <h5>
-                  Welcome <span class="span">{{request.session.fname}}</span>, This is the exam of <span>{{courseName}}</span>
-                </h5>
-              </div>
-              <ol>
-                <li>
-                  <h6>
-                    Here Are Some Instruction For Your Test
-                  </h6>
-                </li>
-                <li>Exam Will Be Of 30 Minutes</li>
-                <li>No Negative Marking</li>
-                <li>Each Question Will Be Of 1 Mark</li>
-                <li>
-                  <div style="display: flex; justify-content: space-between; margin-right: 130px;">
-                    <a href="{% url 'startTest' courseName=courseName %}">
-                      <input type="button" name="startTest" id="startTest" value="Strat Test" class="send" />
-                    </a>
-                  </div>
-                </li>
-                <li>
-                  <div class="clr"></div>
-                </li>
-              </ol>
+            <div style="margin: 30px 0px 40px 0px;">
+              <h5>
+                Welcome <span class="span">{{request.session.fname}}</span>, This is the exam of
+                <span>{{courseName}}</span>
+              </h5>
+            </div>
+            <ol>
+              <li>
+                <h6>
+                  Here Are Some Instruction For Your Test
+                </h6>
+              </li>
+              <li>Exam Will Be Of 30 Minutes</li>
+              <li>No Negative Marking</li>
+              <li>Each Question Will Be Of 1 Mark</li>
+              <li>
+                <div style="display: flex; justify-content: space-between; margin-right: 130px;">
+                  <a href="{% url 'startTest' courseName=courseName %}">
+                    <input type="button" name="startTest" id="startTest" value="Strat Test" class="send" />
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div class="clr"></div>
+              </li>
+            </ol>
             <!-- </form> -->
           </div>
         </div>

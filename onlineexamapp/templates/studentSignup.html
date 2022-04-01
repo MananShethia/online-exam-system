@@ -34,7 +34,7 @@
               {% csrf_token %}
               <ol>
                 <li>
-                  <label for="userType" style="margin-bottom: 10px;">User Type</label>
+                  <label for="userType" style="margin-bottom: 10px;">User Type [Select The Link To Change The User Type]</label>
                   <div id="userType" style="display: flex; margin-right: 500px; margin-top: 10px;">
                     {% if user.userType == "Student" %}
                     <input type="radio" name="userType" value="Student" checked />Student
@@ -45,8 +45,8 @@
                     {% else %}
                     <!-- <input type="radio" name="userType" value="Student" checked/>Student -->
                     <!-- <input type="radio" name="userType" value="Faculty" />Faculty -->
-                    <a href="{% url 'studentSignup' %}"><input type="radio" name="userType" value="Student" checked/>Student</a>
-                    <a href="{% url 'facultySignup' %}"><input type="radio" name="userType" value="Faculty" />Faculty</a>
+                    <a href="{% url 'studentSignup' %}"><input type="radio" name="userType" value="Student" checked/> Student</a>
+                    <a href="{% url 'facultySignup' %}"><input type="radio" name="userType" value="Faculty" /> Faculty</a>
                     {% endif %}
                   </div>
                 <li>

@@ -1,0 +1,5 @@
+document.getElementById("myForm").submit();
+
+OR
+
+document.formname.submit();

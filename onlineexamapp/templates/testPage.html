@@ -8,11 +8,18 @@
 <head>
   <title>VictoryPro | Test Page</title>
   <style>
-    h3{
+    h3 {
       color: black;
     }
-    p{
+
+    p {
       font-size: 25px;
+    }
+
+    .test_timer {
+      position: fixed;
+      top: 100px;
+      right: 30px;
     }
   </style>
 </head>
@@ -22,6 +29,9 @@
     <div class="content">
       <div class="content_resize">
         <div class="mainbar">
+          <div class="test_timer">
+            <span id="display_time"></span>
+          </div>
           <div class="article">
             {% if courseName %}
             <h2><span>{{courseName}}</span> Exam</h2>
@@ -30,7 +40,7 @@
           </div>
           <div class="article">
             <div class="clr"></div>
-            <form action="{% url 'submitTest' %}" method="post">
+            <form name="testPaper" action="{% url 'submitTest' %}" method="post">
               {% csrf_token %}
               <div style="margin: 30px 0px 40px 0px;">
                 {% for i in questionDetail %}
@@ -42,7 +52,7 @@
                 {% endfor %}
                 <div style="display: flex; justify-content: space-between; margin-right: 130px;">
                   <!-- <a href="{% url 'startTest' courseName=courseName %}"> -->
-                    <input type="submit" name="submitTest" id="submitTest" value="Submit Test" class="send" />
+                  <input type="submit" name="submitTest" id="submitTest" value="Submit Test" class="send" />
                   <!-- </a> -->
                 </div>
               </div>
@@ -53,6 +63,23 @@
       </div>
     </div>
   </div>
+  <script>
+    var timeLeft = 30;
+    var elem = document.getElementById('test_timer');
+
+    var timerId = setInterval(countdown, 1000);
+
+    function countdown() {
+      if (timeLeft == 0) {
+        clearTimeout(timerId);
+        // document.testPaper.submit();
+      } else {
+        document.getElementById('display_time').innerHTML = timeLeft + ' seconds remaining';
+        // document.getElementById('display_time').innerHTML = ;
+        timeLeft--;
+      }
+    }
+  </script>
 </body>
 
 </html>
