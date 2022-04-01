@@ -64,10 +64,12 @@
     </div>
   </div>
   <script>
-    var timeLeft = 30;
+    var timeLeft = 25 * $('h3').length;
     var elem = document.getElementById('test_timer');
 
     var timerId = setInterval(countdown, 1000);
+    var minute = 0
+    var hour = 0
 
     function countdown() {
       if (timeLeft == 0) {
